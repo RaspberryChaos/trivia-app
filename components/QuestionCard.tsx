@@ -20,6 +20,7 @@ const QuestionCard: React.FC<Props> = ({question, answers, callback, userAnswer,
                     answers.map((ans,i) => (
                         <div key={i}>
                             <button
+                            value={ans}
                             disabled={userAnswer}
                             onClick={callback}
                             >

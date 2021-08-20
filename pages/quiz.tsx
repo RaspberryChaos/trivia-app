@@ -45,11 +45,33 @@ const questions: NextPage = () => {
     }
 
     const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
-        console.log("Clicked")
+
+        const target = e.target as HTMLButtonElement;
+        const userAnswer = target.value;
+        const correct = userAnswer === questions[number].correct_answer;
+        
+        if(correct) {
+            console.log("correct!")
+            setScore(previousScore => previousScore + 10);
+        } else {
+            console.log("wrong")
+        }
+
+        //Save answer to array
+        const answerObject = {
+            question: questions[number].question,
+            answer: userAnswer,
+            correct: correct,
+            correctAnswer: questions[number].correct_answer,
+        }
+        
+        setUserAnswers((prev) => [...prev, answerObject]);
+        console.log("ao", answerObject)
+        console.log(userAnswers);
     }
 
     const nextQuestion = () => {
-
+        
     }
 
     return (
@@ -70,7 +92,8 @@ const questions: NextPage = () => {
             questionNum={number+1}
             totalQuestions={totalQuestions}
             /> }
-            <button onClick={nextQuestion}>Next Question</button>
+            {!gameOver && !loading && number < totalQuestions &&
+            <button onClick={nextQuestion}>Next Question</button>}
             <Link href="/" passHref>Go Back</Link>
         </div>
     )
