@@ -18,7 +18,6 @@ const CategoryList: React.FC<Props> = ({chooseCategory}) => {
       <Category title="Books" categoryNum={10} callback={chooseCategory} />
       <Category title="Film" categoryNum={11} callback={chooseCategory}/>
       <Category title="Music" categoryNum={12} callback={chooseCategory} />
-      <Link href="/questions">Start Quiz</Link>
     </div>
   )
 }

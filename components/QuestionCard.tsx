@@ -17,16 +17,16 @@ const QuestionCard: React.FC<Props> = ({question, answers, callback, userAnswer,
             <p>{question}</p>
             <div>
                 {
-                    answers.map((ans) => {
-                        <div>
+                    answers.map((ans,i) => (
+                        <div key={i}>
                             <button
-                             disabled={userAnswer}
-                             onClick={callback}
+                            disabled={userAnswer}
+                            onClick={callback}
                             >
                             {ans}  
                             </button>
                         </div>
-                    })
+                    ))
                 }
             </div>
         </div>
