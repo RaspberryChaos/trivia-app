@@ -10,7 +10,7 @@ type Props = {
 const CategoryList: React.FC<Props> = ({chooseCategory}) => {
 
   return (
-    <div className={styles.container}>
+    <div>
       <h1>Choose a Category</h1>
       <Category title="Geography" categoryNum={22} callback={chooseCategory}/>
       <Category title="History" categoryNum={23} callback={chooseCategory}/>
