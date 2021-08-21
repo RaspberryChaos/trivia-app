@@ -95,7 +95,7 @@ const questions: NextPage = () => {
             questionNum={number+1}
             totalQuestions={totalQuestions}
             /> }
-            {!gameOver && !loading && number < totalQuestions -1 &&
+            {!gameOver && !loading && number < totalQuestions -1 && userAnswers.length === number + 1 &&
             <button onClick={nextQuestion}>Next Question</button>}
             <Link href="/" passHref>Go Back</Link>
         </div>
