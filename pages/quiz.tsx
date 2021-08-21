@@ -6,7 +6,7 @@ import CategoryList from "../components/CategoryList";
 import { fetchQuestions } from "./api/triviaAPI";
 import { QuestionState, Difficulty} from "./api/triviaAPI";
 
-type AnswerObject = {
+export type AnswerObject = {
     question: string,
     answer: string,
     correct: boolean,
@@ -71,7 +71,10 @@ const questions: NextPage = () => {
     }
 
     const nextQuestion = () => {
-        
+        //Check not last question
+        if(number < totalQuestions - 1) {
+            setNumber(prev => prev +1);
+        }
     }
 
     return (
@@ -92,7 +95,7 @@ const questions: NextPage = () => {
             questionNum={number+1}
             totalQuestions={totalQuestions}
             /> }
-            {!gameOver && !loading && number < totalQuestions &&
+            {!gameOver && !loading && number < totalQuestions -1 &&
             <button onClick={nextQuestion}>Next Question</button>}
             <Link href="/" passHref>Go Back</Link>
         </div>

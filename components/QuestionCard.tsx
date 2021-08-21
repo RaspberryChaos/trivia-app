@@ -1,10 +1,11 @@
 import React from 'react';
+import type { AnswerObject } from "../pages/quiz";
 
 type Props = {
     question: string,
     answers: string[],
-    callback: any,
-    userAnswer: any,
+    callback: (e: React.MouseEvent<HTMLButtonElement>) => void,
+    userAnswer: AnswerObject | undefined,
     questionNum: number,
     totalQuestions: number
   };
@@ -21,7 +22,7 @@ const QuestionCard: React.FC<Props> = ({question, answers, callback, userAnswer,
                         <div key={i}>
                             <button
                             value={ans}
-                            disabled={userAnswer}
+                            disabled={userAnswer ? true : false}
                             onClick={callback}
                             >
                             {ans}  
