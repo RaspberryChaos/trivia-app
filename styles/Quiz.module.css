@@ -1,0 +1,16 @@
+.startBtn {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    border: 1px solid var(--clr-text);
+    /* box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75); */
+    background-color: var(--bg-transparent);
+    color: var(--clr-text);
+    font-size: 1.5rem;
+    text-shadow: var(--txt-shadow);
+  }
+  
+  .startBtn:hover {
+    background-color: var(--clr-darkpurple);
+    
+  }

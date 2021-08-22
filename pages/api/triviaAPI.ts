@@ -19,8 +19,8 @@ const shuffleArray = (array: any[]) => {
    return [...array].sort(() => Math.random() - Math.random());
 }
 
-export const fetchQuestions = async (amount: number, difficulty: Difficulty) => {
-    const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=22&difficulty=${difficulty}&type=multiple`;
+export const fetchQuestions = async (amount: number, category: number, difficulty: Difficulty) => {
+    const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
     const data = await(await fetch(endpoint)).json();
     console.log(data);
     return data.results.map((question: Question) => ({

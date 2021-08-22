@@ -34,25 +34,45 @@ a {
   text-align: center;
 }
 
-.category {
+.choice {
   padding: 1rem;
   border-radius: 1rem;
   border: none;
   margin: 0.5rem;
-  min-width: 90%;
   background-color: var(--bg-transparent);
   backdrop-filter: blur(8px);
   color: var(--clr-text);
   text-shadow: var(--txt-shadow);
 }
 
-.category:hover {
+.choice:hover {
   background-color: var(--clr-darkpurple);
+  border: 1px solid #ffffff;
+}
+
+.category {
+  min-width: 90%;
+}
+
+.answerGrid {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  text-shadow: var(--txt-shadow);
+}
+
+@media (min-width: 500px) {
+  .answerGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+  }
 }
 
 
 @media (min-width : 768px) {
-  .category {
+  .choice {
     font-size: 2rem;
     padding: 2rem;
   }

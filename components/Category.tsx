@@ -9,7 +9,7 @@ type CategoryProps = {
 const Category: React.FC<CategoryProps> = ({title, callback, categoryNum}) => {
     return (
         <div>
-            <button onClick={callback} value={categoryNum} className="category">{title}</button>
+            <button onClick={callback} value={categoryNum} className="choice category">{title}</button>
         </div>
         )
 };

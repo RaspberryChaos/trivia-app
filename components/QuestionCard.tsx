@@ -13,14 +13,13 @@ type Props = {
 const QuestionCard: React.FC<Props> = ({question, answers, callback, userAnswer, questionNum, totalQuestions}) => {
     return (
         <div>
-            <h1>Quiz</h1>
             <p>Question {questionNum}/{totalQuestions}</p>
             <p>{question}</p>
-            <div>
+            <div className="answerGrid">
                 {
                     answers.map((ans,i) => (
                         <div key={i}>
-                            <button
+                            <button className="choice category"
                             value={ans}
                             disabled={userAnswer ? true : false}
                             onClick={callback}

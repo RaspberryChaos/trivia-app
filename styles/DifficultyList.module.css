@@ -1,0 +1,21 @@
+.heading {
+    text-shadow: var(--txt-shadow);
+    margin: 1rem;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+@media (min-width : 768px) {
+    .heading {
+        font-size: 3rem;
+    }
+    .options {
+        display: flex;
+        flex-direction: row;
+    }
+  }

@@ -5,9 +5,15 @@
 
 .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     text-align: center;
     margin: 2rem 0;
+}
+
+@media (min-width: 500px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (min-width : 768px) {
