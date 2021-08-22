@@ -1,4 +1,4 @@
-.startBtn {
+.btn {
     margin: 1rem;
     padding: 1rem;
     border-radius: 2rem;
@@ -10,7 +10,7 @@
     text-shadow: var(--txt-shadow);
   }
   
-  .startBtn:hover {
+  .btn:hover {
     background-color: var(--clr-darkpurple);
     
   }

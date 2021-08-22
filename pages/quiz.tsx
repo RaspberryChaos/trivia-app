@@ -21,6 +21,7 @@ const questions: NextPage = () => {
 
     const [category, setCategory] = useState("");
     const [difficulty, setDifficulty] = useState<Difficulty>(Difficulty.Easy);
+    const [response, setResponse] = useState<HTMLButtonElement>();
     const [quizState, setQuizState] = useState(1);
     const [loading, setLoading] = useState(false);
     const [questions, setQuestions] = useState<QuestionState[]>([]);
@@ -71,8 +72,12 @@ const questions: NextPage = () => {
         if(correct) {
             console.log("correct!")
             setScore(previousScore => previousScore + 10);
+            setResponse(target);
+            target.classList.add("correct");
         } else {
             console.log("wrong")
+            setResponse(target);
+            target.classList.add("wrong");
         }
 
         //Save answer to array
@@ -93,6 +98,8 @@ const questions: NextPage = () => {
         if(number < totalQuestions - 1) {
             setNumber(prev => prev +1);
         }
+        console.log("res", response);
+        if (response) response.classList.contains("correct") ? response.classList.remove("correct") : response.classList.remove("wrong"); 
     }
 
     const goBack = () => {
@@ -115,7 +122,7 @@ const questions: NextPage = () => {
             <div>
             <h2>Category : {category}</h2>
             <h2>Difficulty : {difficulty}</h2>
-            <button onClick={startQuiz} className={styles.startBtn}>Start Quiz!</button>
+            <button onClick={startQuiz} className={styles.btn}>Start Quiz!</button>
             </div>
             }
 
@@ -134,13 +141,16 @@ const questions: NextPage = () => {
             /> }
 
             {!gameOver && !loading && number < totalQuestions -1 && userAnswers.length === number + 1 &&
-            <button onClick={nextQuestion}>Next Question</button>}
+            <button onClick={nextQuestion} className={styles.btn}>Next Question</button>}
 
             {!gameOver && 
             <p>Score: {score}</p>}
 
+            {userAnswers.length === totalQuestions -1 &&
+            <button onClick={startQuiz} className={styles.btn}>Play Again?</button>}
+
             {quizState > 1 && quizState < 4 &&
-            <button onClick={goBack}>Go Back</button>}
+            <button onClick={goBack} className={styles.btn}>Go Back</button>}
             <Link href="/" passHref>Home</Link>
         </div>
     )

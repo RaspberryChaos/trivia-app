@@ -26,6 +26,7 @@
 .btn:hover {
   background-color: var(--clr-darkpurple);
   border: none;
+  cursor: pointer;
 }
 
 .btn:active {

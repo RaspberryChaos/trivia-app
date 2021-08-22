@@ -14,7 +14,7 @@ const QuestionCard: React.FC<Props> = ({question, answers, callback, userAnswer,
     return (
         <div>
             <p>Question {questionNum}/{totalQuestions}</p>
-            <p>{question}</p>
+            <p className="question">{question}</p>
             <div className="answerGrid">
                 {
                     answers.map((ans,i) => (
