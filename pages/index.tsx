@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div className="container">
       <div className={styles.card}>
         <div className={styles.content}>
           <h1 className={styles.heading}>Trivia Game</h1>

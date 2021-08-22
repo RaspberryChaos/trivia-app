@@ -1,7 +1,6 @@
-.container {
+/* .container {
   background-color: var(--clr-darkpurple);
   background-image: url("../public/bg.jpg");
-  /* background-image: linear-gradient(to bottom, purple, blue, purple); */
   background-size: cover;
   min-width:100%;
   min-height: 100vh;
@@ -10,7 +9,7 @@
   align-items: center;
   flex-direction: column;
   color: var(--clr-text);
-}
+} */
 
 .btn {
   margin: 1rem;
@@ -36,7 +35,7 @@
 .card {
   height: 50vh;
   width: 80%;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--bg-transparent);
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
@@ -58,7 +57,6 @@
   .heading {
     font-size: 2.5rem;
   }
- 
 }
 
 @media (min-width: 992px) {

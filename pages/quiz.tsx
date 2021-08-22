@@ -5,6 +5,7 @@ import QuestionCard from "../components/QuestionCard";
 import CategoryList from "../components/CategoryList";
 import { fetchQuestions } from "./api/triviaAPI";
 import { QuestionState, Difficulty} from "./api/triviaAPI";
+import styles from "../styles/Quiz.module.css";
 
 export type AnswerObject = {
     question: string,
@@ -78,14 +79,24 @@ const questions: NextPage = () => {
     }
 
     return (
-        <div>
+        <div className="container">
             <h1>Quiz</h1>
-            <h2>Category : {category}</h2>
-            {gameOver && <CategoryList chooseCategory={chooseCategory} />}
+
+            {category && 
+            <h2>Category : {category}</h2>}
+            
+            {gameOver && !category &&
+            <CategoryList chooseCategory={chooseCategory} />}
+            
             {gameOver || userAnswers.length === totalQuestions ?
             <button onClick={startQuiz}>Start Quiz</button> : null }
-            {!gameOver && <p>Score: {score}</p>}
-            {loading && <p>Loading Questions...</p>}
+
+            {!gameOver && 
+            <p>Score: {score}</p>}
+
+            {loading && 
+            <p>Loading Questions...</p>}
+           
             {!loading && !gameOver &&  
             <QuestionCard 
             question={questions[number].question}
@@ -95,8 +106,10 @@ const questions: NextPage = () => {
             questionNum={number+1}
             totalQuestions={totalQuestions}
             /> }
+
             {!gameOver && !loading && number < totalQuestions -1 && userAnswers.length === number + 1 &&
             <button onClick={nextQuestion}>Next Question</button>}
+
             <Link href="/" passHref>Go Back</Link>
         </div>
     )
