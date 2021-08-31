@@ -82,7 +82,7 @@ const questions: NextPage = () => {
         
         if(correct) {
             console.log("correct!")
-            setScore(previousScore => previousScore + 10);
+            setScore(previousScore => previousScore + 1);
             setResponse(target);
             target.classList.add("correct");
         } else {
@@ -117,6 +117,16 @@ const questions: NextPage = () => {
        if (quizState > 1) {
            setQuizState(prev => prev - 1);
        }
+    }
+
+    const resetQuiz = () => {
+        setQuizState(1);
+        setUserAnswers([]);
+    }
+
+    const seeResults = () => {
+        setQuizState(5);
+        setGameOver(true);
     }
 
     return (
@@ -155,16 +165,24 @@ const questions: NextPage = () => {
             /> }
 
             {/* Display Score */}
-            {!gameOver && 
-            <h3>Score: {score}</h3>}
+            {!gameOver && userAnswers.length < totalQuestions &&
+            <h2>Score: {score}</h2>}
 
             {/* Display Nest Question Button */}
             {!gameOver && !loading && number < totalQuestions -1 && userAnswers.length === number + 1 &&
             <button onClick={nextQuestion} className={styles.btn}>Next Question</button>}
 
+            {/* Display Game Over Screen */}
+            {!gameOver && !loading && userAnswers.length === totalQuestions &&
+            <button onClick={seeResults} className={styles.btn}>See Results!</button>}
+
             {/* Display Play Again Button at the end of the game */}
-            {userAnswers.length === totalQuestions &&
-            <button onClick={startQuiz} className={styles.btn}>Play Again?</button>}
+            {quizState === 5 && userAnswers.length === totalQuestions &&
+            <div className={styles.gameOver}>
+                <h1>Game Over! You answered {score}/{totalQuestions} questions correctly!</h1>
+                <button onClick={resetQuiz} className={styles.btn}>Play Again?</button>
+            </div>
+            }
 
             {/* Go Back and change category/difficulty before starting game */}
             {quizState > 1 && quizState < 4 &&
