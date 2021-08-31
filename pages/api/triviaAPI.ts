@@ -31,7 +31,7 @@ const shuffleArray = (array: any[]) => {
 export const fetchQuestions = async (amount: number, category: number, difficulty: Difficulty) => {
     const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
     const data = await(await fetch(endpoint)).json();
-    console.log(data);
+    //console.log(data);
     return data.results.map((question: Question) => ({
         ...question,
         allAnswers: shuffleArray([...question.incorrect_answers, question.correct_answer])
