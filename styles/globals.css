@@ -30,12 +30,25 @@ a {
   background-size: cover;
   min-width:100%;
   min-height: 100vh;
+  color: var(--clr-text);
+  text-align: center;
+  margin: auto;
+}
+
+.flex {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: var(--clr-text);
-  text-align: center;
+}
+
+.settings {
+  height: 100vh;
+}
+
+.heading {
+  text-shadow: var(--txt-shadow);
+  margin: 4rem;
 }
 
 .choice {
@@ -100,10 +113,11 @@ h2 {
 
 
 @media (min-width : 768px) {
+  .heading {
+    font-size: 3rem;
+}
   .choice {
     font-size: 2rem;
     padding: 2rem;
   }
-
- 
 }

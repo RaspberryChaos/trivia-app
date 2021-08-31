@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import Link from "next/link";
+import Image from 'next/image';
 import QuestionCard from "../components/QuestionCard";
 import CategoryList from "../components/CategoryList";
 import DifficultyList from "../components/DifficultyList";
@@ -120,16 +121,18 @@ const questions: NextPage = () => {
 
     return (
         <div className="container">
-            <h1>Quiz</h1>
             
+            {/* Display Choice of Category */}
             {quizState === 1 &&
             <CategoryList chooseCategory={chooseCategory} />}
 
+            {/* Display Choice of Difficulty */}
             {quizState === 2 &&
             <DifficultyList chooseDifficulty={chooseDifficulty} />}   
             
+            {/* Display Chosen Options and Start Button */}
             {quizState === 3 &&
-            <div>
+            <div className="flex settings">
             <h2>Category : {categoryName}</h2>
             <h2>Difficulty : {difficulty}</h2>
             <button onClick={startQuiz} className={styles.btn}>Start Quiz!</button>
@@ -140,6 +143,7 @@ const questions: NextPage = () => {
             {loading && 
             <p>Loading Questions...</p>}
            
+           {/* Display Questions */}
             {!loading && !gameOver &&  
             <QuestionCard 
             question={questions[number].question}
@@ -150,18 +154,33 @@ const questions: NextPage = () => {
             totalQuestions={totalQuestions}
             /> }
 
+            {/* Display Score */}
+            {!gameOver && 
+            <h3>Score: {score}</h3>}
+
+            {/* Display Nest Question Button */}
             {!gameOver && !loading && number < totalQuestions -1 && userAnswers.length === number + 1 &&
             <button onClick={nextQuestion} className={styles.btn}>Next Question</button>}
 
-            {!gameOver && 
-            <p>Score: {score}</p>}
-
+            {/* Display Play Again Button at the end of the game */}
             {userAnswers.length === totalQuestions &&
             <button onClick={startQuiz} className={styles.btn}>Play Again?</button>}
 
+            {/* Go Back and change category/difficulty before starting game */}
             {quizState > 1 && quizState < 4 &&
             <button onClick={goBack} className={styles.btn}>Go Back</button>}
-            <Link href="/" passHref>Home</Link>
+            
+            {/* Return to Homepage */}
+            <Link href="/" passHref>
+                <div className={styles.imageContainer}>
+                <Image src={"/home-icon.png"}
+                width={10}
+                height={10}
+                layout="responsive"
+                alt={"Home Icon"}
+                />
+                </div>
+            </Link>
         </div>
     )
 }

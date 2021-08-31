@@ -8,8 +8,8 @@ type Props = {
 
 const DifficultyList: React.FC<Props> = ({ chooseDifficulty }) => {
   return (
-    <div>
-      <h1 className={styles.heading}>Choose a Difficulty</h1>
+    <div className="flex">
+      <h1 className="heading">Choose a Difficulty</h1>
       <div className={styles.options}>
       <button onClick={chooseDifficulty} value={Difficulty.Easy} className="choice difficulty">Easy</button>
       <button onClick={chooseDifficulty} value={Difficulty.Medium} className="choice difficulty">Medium</button>

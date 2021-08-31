@@ -13,7 +13,8 @@ type Props = {
 const QuestionCard: React.FC<Props> = ({question, answers, callback, userAnswer, questionNum, totalQuestions}) => {
     return (
         <div>
-            <p>Question {questionNum}/{totalQuestions}</p>
+            <h1>Quiz</h1>
+            <h2>Question {questionNum}/{totalQuestions}</h2>
             <p className="question">{question}</p>
             <div className="answerGrid">
                 {
