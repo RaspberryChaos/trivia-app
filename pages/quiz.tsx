@@ -18,8 +18,9 @@ export type AnswerObject = {
 
 const totalQuestions = 10;
 
-const questions: NextPage = () => {
+const Questions: NextPage = () => {
 
+// State
     const [categoryName, setCategoryName] = useState("Geography");
     const [categoryNum, setCategoryNum] = useState(22);
     const [difficulty, setDifficulty] = useState<Difficulty>(Difficulty.Easy);
@@ -32,35 +33,30 @@ const questions: NextPage = () => {
     const [score, setScore] = useState(0);
     const [gameOver, setGameOver] = useState(true);
 
-
+//Choose a Category
     const chooseCategory = (e: React.MouseEvent<HTMLButtonElement>) => {
         const target = e.target as HTMLButtonElement;
         if (target) {
             let num = parseInt(target.value);
             let name = target.textContent;
-            console.log("title", target.textContent)
-            setCategoryNum(num);
-            if(name) setCategoryName(name);
-            console.log(categoryNum);
 
+            if(num) setCategoryNum(num);
+            if(name) setCategoryName(name);
         }
-        console.log("clicked");
-        console.log(typeof categoryNum, categoryNum);
         setQuizState(2);
     }
 
+//Choose Difficulty
     const chooseDifficulty = (e: React.MouseEvent<HTMLButtonElement>) => {
         const target = e.target as HTMLButtonElement;
-        //if (target) setDifficulty(target.value);
-        console.log("difficulty clicked");
-        console.log(target.value);
+        
         const level = target.value === "easy" ? Difficulty.Easy :
                         target.value === "medium" ? Difficulty.Medium : Difficulty.Hard;
         setDifficulty(level);
-        console.log("dif", difficulty);
         setQuizState(3);
     }
 
+//Fetch API data and Start Quiz
     const startQuiz = async () => {
         setLoading(true);
         setGameOver(false);
@@ -74,6 +70,7 @@ const questions: NextPage = () => {
         setQuizState(4);
     }
 
+//Check if user response is correct answer
     const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
 
         const target = e.target as HTMLButtonElement;
@@ -81,12 +78,10 @@ const questions: NextPage = () => {
         const correct = userAnswer === questions[number].correct_answer;
         
         if(correct) {
-            console.log("correct!")
             setScore(previousScore => previousScore + 1);
             setResponse(target);
             target.classList.add("correct");
         } else {
-            console.log("wrong")
             setResponse(target);
             target.classList.add("wrong");
         }
@@ -98,32 +93,33 @@ const questions: NextPage = () => {
             correct: correct,
             correctAnswer: questions[number].correct_answer,
         }
-        
         setUserAnswers((prev) => [...prev, answerObject]);
-        console.log("ao", answerObject)
-        console.log(userAnswers);
     }
 
+//Display next question
     const nextQuestion = () => {
         //Check not last question
         if(number < totalQuestions - 1) {
             setNumber(prev => prev +1);
         }
-        console.log("res", response);
+        //console.log("res", response);
         if (response) response.classList.contains("correct") ? response.classList.remove("correct") : response.classList.remove("wrong"); 
     }
 
+//Go back to previous screen and change settings
     const goBack = () => {
        if (quizState > 1) {
            setQuizState(prev => prev - 1);
        }
     }
 
+//Reset Quiz when play again button is clicked
     const resetQuiz = () => {
         setQuizState(1);
         setUserAnswers([]);
     }
 
+//Show game over screen and final score
     const seeResults = () => {
         setQuizState(5);
         setGameOver(true);
@@ -199,8 +195,9 @@ const questions: NextPage = () => {
                 />
                 </div>
             </Link>
+
         </div>
     )
 }
 
-export default questions;
+export default Questions;

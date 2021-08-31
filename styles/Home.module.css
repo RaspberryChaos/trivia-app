@@ -1,16 +1,3 @@
-/* .container {
-  background-color: var(--clr-darkpurple);
-  background-image: url("../public/bg.jpg");
-  background-size: cover;
-  min-width:100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: var(--clr-text);
-} */
-
 .btn {
   margin: 1rem;
   padding: 1rem;

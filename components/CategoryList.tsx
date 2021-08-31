@@ -4,7 +4,7 @@ import styles from "../styles/CategoryList.module.css";
 import { QuestionCategory } from "../pages/api/triviaAPI";
 
 type Props = {
-  chooseCategory: any;
+  chooseCategory: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const CategoryList: React.FC<Props> = ({ chooseCategory }) => {

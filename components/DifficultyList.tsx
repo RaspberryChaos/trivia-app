@@ -3,7 +3,7 @@ import { Difficulty } from "../pages/api/triviaAPI";
 import styles from "../styles/DifficultyList.module.css";
 
 type Props = {
-  chooseDifficulty: any;
+  chooseDifficulty: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const DifficultyList: React.FC<Props> = ({ chooseDifficulty }) => {
