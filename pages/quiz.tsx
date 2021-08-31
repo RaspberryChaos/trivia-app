@@ -19,7 +19,8 @@ const totalQuestions = 10;
 
 const questions: NextPage = () => {
 
-    const [category, setCategory] = useState("");
+    const [categoryName, setCategoryName] = useState("Geography");
+    const [categoryNum, setCategoryNum] = useState(22);
     const [difficulty, setDifficulty] = useState<Difficulty>(Difficulty.Easy);
     const [response, setResponse] = useState<HTMLButtonElement>();
     const [quizState, setQuizState] = useState(1);
@@ -33,8 +34,17 @@ const questions: NextPage = () => {
 
     const chooseCategory = (e: React.MouseEvent<HTMLButtonElement>) => {
         const target = e.target as HTMLButtonElement;
-        if (target) setCategory(target.value);
+        if (target) {
+            let num = parseInt(target.value);
+            let name = target.textContent;
+            console.log("title", target.textContent)
+            setCategoryNum(num);
+            if(name) setCategoryName(name);
+            console.log(categoryNum);
+
+        }
         console.log("clicked");
+        console.log(typeof categoryNum, categoryNum);
         setQuizState(2);
     }
 
@@ -53,7 +63,7 @@ const questions: NextPage = () => {
     const startQuiz = async () => {
         setLoading(true);
         setGameOver(false);
-        const newQuestions = await fetchQuestions(totalQuestions, 23, difficulty);
+        const newQuestions = await fetchQuestions(totalQuestions, categoryNum, difficulty);
         setQuestions(newQuestions);
         console.log("nq", newQuestions)
         setScore(0);
@@ -120,7 +130,7 @@ const questions: NextPage = () => {
             
             {quizState === 3 &&
             <div>
-            <h2>Category : {category}</h2>
+            <h2>Category : {categoryName}</h2>
             <h2>Difficulty : {difficulty}</h2>
             <button onClick={startQuiz} className={styles.btn}>Start Quiz!</button>
             </div>
@@ -146,7 +156,7 @@ const questions: NextPage = () => {
             {!gameOver && 
             <p>Score: {score}</p>}
 
-            {userAnswers.length === totalQuestions -1 &&
+            {userAnswers.length === totalQuestions &&
             <button onClick={startQuiz} className={styles.btn}>Play Again?</button>}
 
             {quizState > 1 && quizState < 4 &&

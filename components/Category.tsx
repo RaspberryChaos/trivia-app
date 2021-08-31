@@ -1,15 +1,16 @@
 import React from 'react';
+import { QuestionCategory } from "../pages/api/triviaAPI";
 
 type CategoryProps = {
     title: string,
     callback: any,
-    categoryNum: number,
+    value: QuestionCategory,
   };
 
-const Category: React.FC<CategoryProps> = ({title, callback, categoryNum}) => {
+const Category: React.FC<CategoryProps> = ({title, value, callback}) => {
     return (
         <div>
-            <button onClick={callback} value={categoryNum} className="choice category">{title}</button>
+            <button onClick={callback} value={value} className="choice category">{title}</button>
         </div>
         )
 };

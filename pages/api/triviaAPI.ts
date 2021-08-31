@@ -15,6 +15,15 @@ export enum Difficulty {
     Hard = "hard"
 }
 
+export enum QuestionCategory {
+    Geography = 22,
+    History = 23,
+    Animals = 27,
+    Books = 10,
+    Film = 11,
+    Music = 12
+}
+
 const shuffleArray = (array: any[]) => {
    return [...array].sort(() => Math.random() - Math.random());
 }

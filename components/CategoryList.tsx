@@ -1,6 +1,7 @@
 import React from "react";
 import Category from "../components/Category";
 import styles from "../styles/CategoryList.module.css";
+import { QuestionCategory } from "../pages/api/triviaAPI";
 
 type Props = {
   chooseCategory: any;
@@ -11,12 +12,12 @@ const CategoryList: React.FC<Props> = ({ chooseCategory }) => {
     <div>
       <h1 className={styles.heading}>Choose a Category</h1>
       <div className={styles.grid}>
-      <Category title="Geography" categoryNum={22} callback={chooseCategory} />
-      <Category title="History" categoryNum={23} callback={chooseCategory} />
-      <Category title="Animals" categoryNum={27} callback={chooseCategory} />
-      <Category title="Books" categoryNum={10} callback={chooseCategory} />
-      <Category title="Film" categoryNum={11} callback={chooseCategory} />
-      <Category title="Music" categoryNum={12} callback={chooseCategory} />
+      <Category title="Geography" value={QuestionCategory.Geography} callback={chooseCategory} />
+      <Category title="History" value={QuestionCategory.History} callback={chooseCategory} />
+      <Category title="Animals" value={QuestionCategory.Animals} callback={chooseCategory} />
+      <Category title="Books" value={QuestionCategory.Books} callback={chooseCategory} />
+      <Category title="Film" value={QuestionCategory.Film} callback={chooseCategory} />
+      <Category title="Music" value={QuestionCategory.Music} callback={chooseCategory} />
       </div>
     </div>
   );
